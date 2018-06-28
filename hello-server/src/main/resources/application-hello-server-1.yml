@@ -6,7 +6,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eurake-server-1:8761/eureka/,http://eurake-server-2:8762/eureka/
+      defaultZone: http://eureka-server-1:8761/eureka/,http://eureka-server-2:8762/eureka/
   instance:
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
