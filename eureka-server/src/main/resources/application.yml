@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: eurake-server
+
+#server:
+#  port: 8761
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+spring:
+  profiles: eurake-server-1
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: eurake-server-1
+  client:
+    service-url:
+      defaultZone: http://eurake-server-2:8762/eureka/
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 6000
+
+
+---
+spring:
+  profiles: eurake-server-2
+server:
+  port: 8762
+
+eureka:
+  instance:
+    hostname: eurake-server-2
+  client:
+    service-url:
+      defaultZone: http://eurake-server-1:8761/eureka/
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 6000
