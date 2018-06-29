@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: config-consumer
+server:
+  port: 9002
