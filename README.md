@@ -1,10 +1,8 @@
 # spring-cloud-example
 spring cloud 的一些范例
 
-
 ## 概要
 对近来使用 spring cloud 做下总结与复盘.
-
 
 ##项目结构
 ```
@@ -13,6 +11,9 @@ spring-cloud-example
   |- hello-server
   |- ribbon-consumer
   |- example-service-api
+  |- config-server
+  |- config-repo
+  |- config-consumer
 
 ```
 ### eureka-server
