@@ -1,5 +1,6 @@
 package com.ihanyong.ribbon.consumer;
 
+import com.ihanyong.example.service.api.hello.server.HelloApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class ConsumerController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private HelloApi helloApiRemote;
+
+
 
     @RequestMapping("consumer/hello")
     public String hello(String name) {
@@ -28,5 +33,15 @@ public class ConsumerController {
 
 
         return new StringBuffer("the hello-server says [").append(said).append("] to you.").toString();
+    }
+
+
+    @RequestMapping("consumer/hello/with/feign")
+    public String helloWithFeith(String name) {
+        LOGGER.info("ask hello-server for {}", name);
+
+        String resp = helloApiRemote.helloWithFeign(name);
+
+        return new StringBuffer("the hello-server says [").append(resp).append("] to you.").toString();
     }
 }
